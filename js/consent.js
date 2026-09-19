@@ -5,7 +5,7 @@
    das Nachladen zuverlässig. */
 (function(){
   var CONSENT_KEY = 'gastrokompass-cookie-consent';
-  var GA_ID = 'G-KSNFC1RGY9';
+  var GA_ID = 'G-3F4C9137YF';
   var gaLoaded = false;
 
   function getConsent(){
