@@ -1,7 +1,8 @@
 <?php
 /**
  * send-mail.php
- * Kontaktformular-Handler für gastrokompass.ch — Versand über Google Workspace (SMTP)
+ * Kontaktformular-Handler für gastrokompass.ch — Versand über das eigene
+ * hosttech-Postfach (SMTP)
  *
  * EINRICHTUNG:
  *   1. config.example.php nach config.php kopieren und dort die echten
@@ -88,17 +89,17 @@ $body .= "Nachricht:\n$message\n";
 $mail = new PHPMailer(true);
 
 try {
-    // SMTP-Verbindung über Google Workspace
+    // SMTP-Verbindung über das eigene hosttech-Postfach
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
+    $mail->Host       = SMTP_HOST;
     $mail->SMTPAuth   = true;
     $mail->Username   = SMTP_USERNAME;
-    $mail->Password   = SMTP_APP_PASSWORD;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+    $mail->Password   = SMTP_PASSWORD;
+    $mail->SMTPSecure = SMTP_ENCRYPTION === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = SMTP_PORT;
     $mail->CharSet    = 'UTF-8';
 
-    $mail->setFrom(SMTP_USERNAME, 'gastrokompass Website');
+    $mail->setFrom(SMTP_USERNAME, MAIL_FROM_NAME);
     $mail->addAddress(MAIL_TO);
     $mail->addReplyTo($email, $name); // Antworten gehen direkt an den Absender
 

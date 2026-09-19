@@ -4,19 +4,25 @@
  *
  * EINRICHTUNG:
  *   1. Diese Datei nach config.php kopieren.
- *   2. In config.php die echten Werte eintragen.
+ *   2. In config.php die echten Werte eintragen (siehe unten).
  *   3. config.php NIEMALS committen — sie ist in .gitignore eingetragen.
  *   4. config.php zusammen mit den übrigen Dateien auf den Server hochladen
  *      (per FTP/SFTP direkt, nicht über Git).
  *
- * In Google Workspace vorher:
- *   - 2-Schritt-Verifizierung für die Absender-Adresse aktivieren
- *     (myaccount.google.com/security)
- *   - Ein "App-Passwort" erzeugen (Suche nach "App-Passwörter") — NICHT das
- *     normale Konto-Passwort verwenden, das funktioniert mit SMTP-Login
- *     nicht zuverlässig.
+ * SMTP-ZUGANGSDATEN FINDEN (eigenes hosttech-Postfach):
+ *   Im hosttech Kundencenter unter "E-Mail" bzw. "Mail Center" das
+ *   betreffende Postfach öffnen — dort werden die genauen SMTP-Angaben
+ *   (Server, Port, Verschlüsselung) für dieses Postfach angezeigt. Die
+ *   Werte unten sind die bei hosttech üblichen Standardwerte; falls das
+ *   Kundencenter andere Angaben zeigt, diese verwenden.
+ *   SMTP_USERNAME ist die volle E-Mail-Adresse des Postfachs,
+ *   SMTP_PASSWORD das dazugehörige Postfach-Passwort.
  */
 
-const SMTP_USERNAME     = 'team@gastrokompass.ch';   // sendende Google-Workspace-Adresse
-const SMTP_APP_PASSWORD = 'HIER_APP_PASSWORT_EINSETZEN';
-const MAIL_TO           = 'team@gastrokompass.ch';   // Empfänger der Anfragen
+const SMTP_HOST        = 'mail.gastrokompass.ch'; // ggf. im hosttech Mail Center prüfen
+const SMTP_PORT        = 587;                     // 587 = STARTTLS, 465 = SSL/TLS
+const SMTP_ENCRYPTION  = 'tls';                   // 'tls' für Port 587, 'ssl' für Port 465
+const SMTP_USERNAME    = 'team@gastrokompass.ch'; // sendendes Postfach
+const SMTP_PASSWORD    = 'HIER_POSTFACH_PASSWORT_EINSETZEN';
+const MAIL_TO          = 'team@gastrokompass.ch'; // Empfänger der Anfragen
+const MAIL_FROM_NAME   = 'gastrokompass Website';
