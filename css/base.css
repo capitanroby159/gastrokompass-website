@@ -239,6 +239,8 @@ footer{ background:var(--black); padding:56px 0 30px; }
 }
 .footer-logo img{ height:22px; width:auto; filter:brightness(0) invert(1); margin-bottom:14px; }
 .footer-col .caption{ color:rgba(250,248,244,0.55); }
+.footer-col .caption a{ text-decoration:underline; text-underline-offset:2px; }
+.footer-col .caption a:hover{ color:var(--accent-light); }
 .footer-nav{ display:flex; gap:36px; flex-wrap:wrap; }
 .footer-nav a{
   font-family:var(--font-body);
