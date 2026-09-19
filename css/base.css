@@ -9,10 +9,11 @@
   --primary-light:#EEF2EE;
   --accent:#C2A671;
   --accent-light:#D4BC92;
+  --accent-text:#7C6A48; /* dunklere Gold-Variante für Fliesstext, erfüllt WCAG-Kontrast auf hellem Grund */
   --accent-surface:#F7F0E4;
   --black:#1C1C1A;
   --black-soft:#2E2E2B;
-  --gray-mid:#8A8880;
+  --gray-mid:#6F6D67;
   --gray-light:#E8E5DE;
   --white-warm:#F2EFE8;
   --white-pure:#FAF8F4;
@@ -52,7 +53,7 @@ section{ scroll-margin-top:84px; }
   font-size:10px;
   letter-spacing:0.22em;
   text-transform:uppercase;
-  color:var(--accent);
+  color:var(--accent-text);
 }
 .display{
   font-family:var(--font-display);
@@ -254,4 +255,4 @@ footer{ background:var(--black); padding:56px 0 30px; }
   gap:10px;
   padding-top:24px;
 }
-.footer-bottom .caption{ color:rgba(250,248,244,0.4); }
+.footer-bottom .caption{ color:rgba(250,248,244,0.55); }
