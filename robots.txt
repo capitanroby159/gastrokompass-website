@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /lib/
+Disallow: /send-mail.php
+
+Sitemap: https://www.gastrokompass.ch/sitemap.xml
