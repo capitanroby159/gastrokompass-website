@@ -237,7 +237,7 @@ footer{ background:var(--black); padding:56px 0 30px; }
   padding-bottom:36px;
   border-bottom:1px solid rgba(250,248,244,0.12);
 }
-.footer-logo img{ height:22px; filter:brightness(0) invert(1); margin-bottom:14px; }
+.footer-logo img{ height:22px; width:auto; filter:brightness(0) invert(1); margin-bottom:14px; }
 .footer-col .caption{ color:rgba(250,248,244,0.55); }
 .footer-nav{ display:flex; gap:36px; flex-wrap:wrap; }
 .footer-nav a{
