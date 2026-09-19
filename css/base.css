@@ -1,0 +1,257 @@
+/* ==========================================================================
+   gastrokompass — base.css
+   Geteilte Basis für alle Seiten: Variablen, Typografie, Header, Buttons, Footer
+   ========================================================================== */
+
+:root{
+  --primary:#2E3D32;
+  --primary-hover:#3D5244;
+  --primary-light:#EEF2EE;
+  --accent:#C2A671;
+  --accent-light:#D4BC92;
+  --accent-surface:#F7F0E4;
+  --black:#1C1C1A;
+  --black-soft:#2E2E2B;
+  --gray-mid:#8A8880;
+  --gray-light:#E8E5DE;
+  --white-warm:#F2EFE8;
+  --white-pure:#FAF8F4;
+
+  --font-display:'Cormorant Garamond', serif;
+  --font-body:'Jost', sans-serif;
+
+  --max-w:1160px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--white-warm);
+  color:var(--black);
+  font-family:var(--font-body);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+section{ scroll-margin-top:84px; }
+
+.wrap{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:0 32px;
+}
+
+/* ===== TYPOGRAFIE ===== */
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.display{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height:1.12;
+  color:var(--black);
+  margin:0;
+}
+.display em{
+  font-style:italic;
+  font-weight:300;
+  color:var(--primary);
+}
+.heading-section{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(1.6rem, 2.6vw, 1.9rem);
+  line-height:1.25;
+  color:var(--black);
+  margin:0;
+}
+.heading-card{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:1.25rem;
+  line-height:1.3;
+  color:var(--black);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  margin:0;
+}
+.h3{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.0625rem;
+  line-height:1.4;
+  color:var(--black);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  margin:0;
+}
+.lead{
+  font-family:var(--font-body);
+  font-weight:300;
+  font-size:1.125rem;
+  line-height:1.75;
+  color:var(--black-soft);
+}
+p{ margin:0; }
+.caption{
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:12px;
+  color:var(--gray-mid);
+  letter-spacing:0.02em;
+}
+
+/* ===== SECTION-RAHMEN (wiederverwendbar) ===== */
+.section-head{
+  text-align:center;
+  max-width:560px;
+  margin:0 auto 56px;
+}
+.section-head .eyebrow{ display:block; margin-bottom:14px; }
+.section-head .heading-section{ margin-bottom:14px; }
+.section-head .lead{ color:var(--gray-mid); font-size:1.0625rem; }
+
+section.block{ padding:96px 0; }
+section.block.tight{ padding:72px 0; }
+section.block.alt{ background:var(--white-pure); }
+
+/* ===== HEADER / NAV ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--primary);
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:72px;
+}
+.logo-link img{ height:26px; width:auto; filter:brightness(0) invert(1); }
+nav.primary-nav{
+  display:flex;
+  align-items:center;
+  gap:38px;
+}
+nav.primary-nav a.nav-link{
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:14px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--white-pure);
+  opacity:0.88;
+  transition:opacity .2s ease, color .2s ease;
+  white-space:nowrap;
+}
+nav.primary-nav a.nav-link:hover{ opacity:1; color:var(--accent-light); }
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:14px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:13px 26px;
+  border-radius:2px;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+  white-space:nowrap;
+}
+.btn-primary{ background:var(--primary); color:var(--white-pure); }
+.btn-primary:hover{ background:var(--primary-hover); }
+.btn-primary-outline{ background:transparent; color:var(--primary); border-color:var(--primary); }
+.btn-primary-outline:hover{ background:var(--primary); color:var(--white-pure); }
+.btn-accent{ background:var(--accent); color:var(--primary); }
+.btn-accent:hover{ background:var(--accent-light); }
+.btn-on-dark{ background:var(--accent); color:var(--primary); }
+.btn-on-dark:hover{ background:var(--accent-light); }
+.btn-ghost-on-dark{ background:transparent; color:var(--white-pure); border-color:rgba(250,248,244,0.4); }
+.btn-ghost-on-dark:hover{ border-color:var(--white-pure); }
+
+.nav-cta{ display:flex; align-items:center; gap:18px; }
+.burger{
+  display:none;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  flex-direction:column;
+  gap:5px;
+}
+.burger span{ width:22px; height:1px; background:var(--white-pure); display:block; }
+
+.mobile-panel{
+  display:none;
+  flex-direction:column;
+  gap:0;
+  background:var(--primary-hover);
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .3s ease;
+}
+.mobile-panel a{
+  padding:16px 32px;
+  font-family:var(--font-body);
+  font-size:14px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--white-pure);
+  border-top:1px solid rgba(250,248,244,0.12);
+}
+.mobile-panel.open{ max-height:400px; }
+
+@media (max-width:860px){
+  nav.primary-nav{ display:none; }
+  .nav-cta .btn-accent{ padding:9px 16px; font-size:11px; }
+  .burger{ display:flex; }
+  .mobile-panel{ display:flex; }
+}
+
+/* ===== FOOTER ===== */
+footer{ background:var(--black); padding:56px 0 30px; }
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:32px;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(250,248,244,0.12);
+}
+.footer-logo img{ height:22px; filter:brightness(0) invert(1); margin-bottom:14px; }
+.footer-col .caption{ color:rgba(250,248,244,0.55); }
+.footer-nav{ display:flex; gap:36px; flex-wrap:wrap; }
+.footer-nav a{
+  font-family:var(--font-body);
+  font-size:13px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:rgba(250,248,244,0.7);
+}
+.footer-nav a:hover{ color:var(--accent-light); }
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+  padding-top:24px;
+}
+.footer-bottom .caption{ color:rgba(250,248,244,0.4); }
