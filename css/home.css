@@ -237,8 +237,10 @@
 .contact-form textarea{ resize:vertical; min-height:96px; }
 .contact-form button[type="submit"]{ border:none; margin-top:4px; align-self:flex-start; }
 .hp-field{ position:absolute; left:-9999px; opacity:0; }
-.form-success{
+.form-success, .form-error{
   max-width:480px; margin:0 auto; padding:20px 24px;
   border:1px solid rgba(250,248,244,0.3); border-radius:2px;
   color:var(--white-pure); font-family:var(--font-body); font-size:14px;
 }
+.form-error{ border-color:rgba(220,120,110,0.6); }
+.form-error a{ color:inherit; text-decoration:underline; }

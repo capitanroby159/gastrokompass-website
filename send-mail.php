@@ -72,9 +72,7 @@ if ($message === '') {
 }
 
 if (!empty($errors)) {
-    http_response_code(400);
-    echo 'Es gab ein Problem mit Ihrer Eingabe: ' . htmlspecialchars(implode(', ', $errors), ENT_QUOTES, 'UTF-8') . '. ';
-    echo 'Bitte gehen Sie zurück und prüfen Sie das Formular.';
+    header('Location: index.html?kontakt=fehler#termin');
     exit;
 }
 
@@ -113,10 +111,9 @@ try {
     header('Location: index.html?kontakt=erfolg#termin');
     exit;
 } catch (Exception $e) {
-    http_response_code(500);
-    echo 'Die Nachricht konnte leider nicht gesendet werden. ';
-    echo 'Bitte versuchen Sie es später erneut oder schreiben Sie direkt an team@gastrokompass.ch.';
-    // Für die Fehlersuche während der Einrichtung (danach gerne entfernen):
-    // echo '<!-- ' . htmlspecialchars($mail->ErrorInfo, ENT_QUOTES, 'UTF-8') . ' -->';
+    // Für die Fehlersuche im Server-Errorlog protokollieren, dem Nutzer aber
+    // keine internen Details zeigen — nur zurück zum Formular mit Hinweis.
+    error_log('gastrokompass send-mail.php: ' . $mail->ErrorInfo);
+    header('Location: index.html?kontakt=serverfehler#termin');
     exit;
 }
