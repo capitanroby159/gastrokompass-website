@@ -3,24 +3,22 @@
  * send-mail.php
  * Kontaktformular-Handler für gastrokompass.ch — Versand über Google Workspace (SMTP)
  *
- * EINRICHTUNG (vor dem Hochladen ausfüllen):
- *   1. In Google Workspace: 2-Schritt-Verifizierung für die Absender-Adresse aktivieren
- *      (myaccount.google.com/security)
- *   2. Dort ein "App-Passwort" erzeugen (Suche nach "App-Passwörter") — NICHT das normale
- *      Konto-Passwort verwenden, das funktioniert mit SMTP-Login nicht zuverlässig.
- *   3. Unten bei SMTP_USERNAME die sendende Adresse eintragen, bei SMTP_APP_PASSWORD
- *      das erzeugte App-Passwort (16-stellig, ohne Leerzeichen).
- *   4. Diese Datei + den Ordner lib/phpmailer/ zusammen mit index.html auf hosttech hochladen.
+ * EINRICHTUNG:
+ *   1. config.example.php nach config.php kopieren und dort die echten
+ *      Zugangsdaten eintragen (siehe Anleitung in config.example.php).
+ *   2. config.php + diese Datei + den Ordner lib/phpmailer/ zusammen mit
+ *      index.html auf hosttech hochladen.
  *
- * WICHTIG: Diese Datei enthält nach dem Ausfüllen ein Passwort im Klartext.
- * Nicht öffentlich teilen, nicht in ein öffentliches Git-Repo committen.
+ * config.php enthält Zugangsdaten im Klartext und ist deshalb in .gitignore
+ * eingetragen — sie darf nie ins Git-Repo committet werden.
  */
 
-// ---- Konfiguration ----------------------------------------------------
-const SMTP_USERNAME     = 'team@gastrokompass.ch';   // sendende Google-Workspace-Adresse
-const SMTP_APP_PASSWORD = 'HIER_APP_PASSWORT_EINSETZEN';
-const MAIL_TO           = 'team@gastrokompass.ch';   // Empfänger der Anfragen
-// -------------------------------------------------------------------------
+$configFile = __DIR__ . '/config.php';
+if (!is_file($configFile)) {
+    http_response_code(500);
+    exit('Serverkonfiguration fehlt (config.php). Bitte config.example.php kopieren und ausfüllen.');
+}
+require $configFile;
 
 require __DIR__ . '/lib/phpmailer/Exception.php';
 require __DIR__ . '/lib/phpmailer/PHPMailer.php';
@@ -37,6 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Honeypot: Bots füllen unsichtbare Felder aus, Menschen nicht.
 if (!empty($_POST['website'])) {
+    exit;
+}
+
+// Zeit-Falle: Formulare, die schneller als 3 Sekunden nach dem Laden
+// abgeschickt werden, stammen praktisch immer von Bots, keinen Menschen.
+$loadedAt = (int) ($_POST['ts'] ?? 0);
+if ($loadedAt <= 0 || (time() - $loadedAt) < 3) {
     exit;
 }
 

@@ -1,0 +1,6 @@
+# Lokale Konfiguration mit Zugangsdaten — niemals committen
+config.php
+
+# OS/Editor
+.DS_Store
+Thumbs.db

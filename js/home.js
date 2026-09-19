@@ -8,4 +8,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if (form) form.style.display = 'none';
     if (success) success.style.display = 'block';
   }
+
+  // Zeitstempel für die serverseitige Zeit-Falle gegen Spam-Bots setzen.
+  var tsField = document.getElementById('cf-ts');
+  if (tsField) tsField.value = Math.floor(Date.now() / 1000);
 });
