@@ -47,7 +47,7 @@
   flex-direction:column;
   gap:16px;
 }
-.service-card .icon{ width:32px; height:32px; }
+.service-card .icon{ width:32px; height:32px; color:var(--accent); }
 .service-card .heading-card{ margin-top:4px; min-height:56px; }
 .service-card p{ color:var(--black-soft); font-size:16px; line-height:1.75; min-height:170px; }
 .service-card .img-slot{
