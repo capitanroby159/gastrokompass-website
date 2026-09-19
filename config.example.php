@@ -20,8 +20,8 @@
  */
 
 const SMTP_HOST        = 'mail.gastrokompass.ch'; // ggf. im hosttech Mail Center prüfen
-const SMTP_PORT        = 587;                     // 587 = STARTTLS, 465 = SSL/TLS
-const SMTP_ENCRYPTION  = 'tls';                   // 'tls' für Port 587, 'ssl' für Port 465
+const SMTP_PORT        = 465;                     // 465 = SSL/TLS
+const SMTP_ENCRYPTION  = 'ssl';                   // 'ssl' für Port 465, 'tls' für Port 587
 const SMTP_USERNAME    = 'team@gastrokompass.ch'; // sendendes Postfach
 const SMTP_PASSWORD    = 'HIER_POSTFACH_PASSWORT_EINSETZEN';
 const MAIL_TO          = 'team@gastrokompass.ch'; // Empfänger der Anfragen
